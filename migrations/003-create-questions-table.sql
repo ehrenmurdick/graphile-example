@@ -15,7 +15,6 @@ values
   (3, 'what is the third question from this reference?');
 
 
-
 GRANT ALL PRIVILEGES ON questions TO graphql;
 grant all PRIVILEGES on questions_id_seq to graphql;
 
