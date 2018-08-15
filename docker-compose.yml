@@ -1,0 +1,44 @@
+version: "3"
+services:
+  graphql:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - postgres
+    depends_on:
+      - postgres
+
+  postgres:
+    hostname: postgres
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   ports:
+  #     - "3000:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: postgres
+  #     PGADMIN_DEFAULT_PASSWORD: postgres
+  #     SERVER_PORT: 5050
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - pgadmin:/var/lib/pgadmin
+  #   networks:
+  #     - postgres
+
+volumes:
+  pgdata:
+#   pgadmin:
+
+networks:
+  postgres:

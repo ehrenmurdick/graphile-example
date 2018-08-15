@@ -1,0 +1,7 @@
+# vim:set ft=dockerfile:
+
+FROM postgres:alpine
+
+COPY migrations /migrations
+
+COPY initdb.sh /docker-entrypoint-initdb.d/
